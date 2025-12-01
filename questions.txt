@@ -1,8 +1,13 @@
 Your questions here.
 
-1. Why does every class need to have it's own file?
+(would change to a markdown if gradescope would allow it, so i'm just writing
+in markdown notation anyways)
 
-2. Why is this content in the braces not connected to an actual process? It's kinda just...there?
+1. Why does every class need to have it's own file? At least, why does it not
+   give the user freedom of choice with file organization
+
+2. Why is this content in the braces not connected to an actual process? It's 
+   kinda just...there?
     ```
         public List<Medicine> goods;
 
@@ -10,3 +15,6 @@ Your questions here.
             goods = new ArrayList<Medicine>();
         }
     ```
+
+3. Why are the .java files so nested? What is the benefit of doing 
+   `/home/ihage/projects/medava/src/main/java/edu/uc/cs3003/medava/Hospital.java`

@@ -4,10 +4,49 @@ public class Pharmacy {
     public Pharmacy(String pharmacyName) {
         mPharmacyName = pharmacyName;
     }
+
     public boolean send(Transporter t) {
-        Medicine advil = new Medicine("Advil");
-        System.out.println(String.format("Sending an %s.", advil.getMedicineName()));
-        return t.goods.add(advil);
+        Medicine ibuprofen = new Ibuprofen();
+        if (t.load(ibuprofen)) {
+            System.out.println(String.format("Sending %s on the %s transporter.", ibuprofen.getMedicineName(),
+                    t.getTransporterName()));
+        } else {
+            System.out.println(String.format("Cannot load %s on to the %s transporter.", ibuprofen.getMedicineName(),
+                    t.getTransporterName()));
+            return false;
+        }
+
+        Medicine activase = new Thrombolytic();
+        if (t.load(activase)) {
+            System.out.println(String.format("Sending %s on the %s transporter.", activase.getMedicineName(),
+                    t.getTransporterName()));
+        } else {
+            System.out.println(String.format("Cannot load %s on to the %s transporter.", activase.getMedicineName(),
+                    t.getTransporterName()));
+            return false;
+        }
+
+        Medicine oxycontin = new Oxycodone();
+        if (t.load(oxycontin)) {
+            System.out.println(String.format("Sending %s on the %s transporter.", oxycontin.getMedicineName(),
+                    t.getTransporterName()));
+        } else {
+            System.out.println(String.format("Cannot load %s on to the %s transporter.", oxycontin.getMedicineName(),
+                    t.getTransporterName()));
+            return false;
+        }
+
+        Jarvik heart = new Jarvik("01j9a9lk71");
+        if (t.load(heart)) {
+            System.out.println(String.format("Sending %s on the %s transporter.", heart.getMedicineName(),
+                    t.getTransporterName()));
+        } else {
+            System.out.println(String.format("Cannot load %s on to the %s transporter.", heart.getMedicineName(),
+                    t.getTransporterName()));
+            return false;
+        }
+
+        return true;
     }
 
     public String pharmacyName() {
@@ -15,4 +54,5 @@ public class Pharmacy {
     }
 
     private String mPharmacyName;
+
 }

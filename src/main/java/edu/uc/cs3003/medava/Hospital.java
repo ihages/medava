@@ -1,5 +1,8 @@
 package edu.uc.cs3003.medava;
 
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+
 public class Hospital {
 
     public Hospital(String hospitalName) {
@@ -7,12 +10,17 @@ public class Hospital {
     }
 
     void receive(Transporter t) {
-        while (!t.goods.isEmpty()) {
-            Medicine unloaded = t.goods.remove(0);
-            System.out.println(String.format("Receiving an %s.", unloaded.getMedicineName()));
+        while (!t.isEmpty()) {
+            Shippable unloaded = t.unload();
+            System.out.println(String.format("Checking whether Hospital can receive %s.", unloaded.getMedicineName()));
+            if (unloaded.getSchedule() != MedicineSchedule.Uncontrolled) {
+                System.out.println(String.format("Hospital cannot receive controlled substances and %s is a %s.",
+                        unloaded.getMedicineName(), unloaded.getSchedule().asString()));
+            } else {
+                System.out.println(String.format("Accepted a shipment of %s.", unloaded.getMedicineName()));
+            }
         }
     }
-
     public String name() {
         return name;
     }
